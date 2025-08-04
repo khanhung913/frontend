@@ -41,13 +41,18 @@
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex  justify-content-around align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex justify-content-around align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <h1 class="sitename">QuickStart</h1>
       </a>
-      
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <div id="suggestionsBox" class="suggestions"></div>
+      </div>
+
       <a class="btn-getstarted" href="index.html#about">Get Started</a>
 
     </div>
