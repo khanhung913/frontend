@@ -178,29 +178,71 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
 const searchInput = document.getElementById('searchInput');
 const suggestionsBox = document.getElementById('suggestionsBox');
 
-const suggestions = [
-  "apple", "banana", "cherry", "date", "grape", "mango", "melon", "orange"
-];
+if (searchInput && suggestionsBox) {
+  const suggestions = [
+    "apple", "banana", "cherry", "date", "grape", "mango", "melon", "orange"
+  ];
 
-searchInput.addEventListener("input", () => {
-  const keyword = searchInput.value.toLowerCase();
-  const filtered = suggestions.filter(item => item.includes(keyword));
-
-  if (keyword === '' || filtered.length === 0) {
-    suggestionsBox.style.display = "none";
-    return;
+  function getHistory() {
+    return JSON.parse(localStorage.getItem('searchHistory') || '[]');
   }
 
-  suggestionsBox.innerHTML = filtered.map(item => `<div>${item}</div>`).join("");
-  suggestionsBox.style.display = "block";
-});
-
-// Ẩn khi click ngoài
-document.addEventListener("click", (e) => {
-  if (!document.querySelector(".search-box").contains(e.target)) {
-    suggestionsBox.style.display = "none";
+  function addHistory(term) {
+    if (!term) return;
+    let history = getHistory().filter(item => item !== term);
+    history.unshift(term);
+    history = history.slice(0, 5);
+    localStorage.setItem('searchHistory', JSON.stringify(history));
   }
-});
+
+  function showSuggestions(items) {
+    if (items.length === 0) {
+      suggestionsBox.style.display = 'none';
+      return;
+    }
+    suggestionsBox.innerHTML = items.map(item => `<div class="suggestion-item">${item}</div>`).join('');
+    suggestionsBox.style.display = 'block';
+  }
+
+  searchInput.addEventListener('focus', () => {
+    if (searchInput.value.trim() === '') {
+      showSuggestions(getHistory());
+    }
+  });
+
+  searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    if (keyword === '') {
+      showSuggestions(getHistory());
+      return;
+    }
+    const filtered = suggestions.filter(item => item.includes(keyword));
+    showSuggestions(filtered);
+  });
+
+  suggestionsBox.addEventListener('click', (e) => {
+    if (e.target.classList.contains('suggestion-item')) {
+      const value = e.target.textContent;
+      searchInput.value = value;
+      addHistory(value);
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      addHistory(searchInput.value.trim());
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+}

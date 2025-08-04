@@ -41,12 +41,17 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <h1 class="sitename">QuickStart</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <div class="search-container mx-4">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <div id="suggestionsBox" class="suggestions"></div>
+      </div>
+
+      <nav id="navmenu" class="navmenu ms-auto">
         <ul>
           <li><a href="index.html#hero">Home</a></li>
           <li><a href="index.html#about">About</a></li>
