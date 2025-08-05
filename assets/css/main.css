@@ -209,13 +209,13 @@ h6 {
   flex-wrap: wrap;
 }
 
-.header .search-container {
+.search-container {
   position: relative;
   max-width: 400px;
   width: 100%;
 }
 
-.header .search-container input {
+.search-container input {
   width: 100%;
   padding: 6px 12px 6px 36px;
   border: none;
@@ -223,13 +223,13 @@ h6 {
   background: #f6f7f8;
 }
 
-.header .search-container input:focus {
+.search-container input:focus {
   outline: none;
   background: #fff;
   box-shadow: 0 0 0 1px #ccc;
 }
 
-.header .search-container .search-icon {
+.search-container .search-icon {
   position: absolute;
   top: 50%;
   left: 12px;
@@ -238,7 +238,7 @@ h6 {
   color: #666;
 }
 
-.header .search-container .history-results {
+.search-container .history-results {
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
@@ -254,19 +254,19 @@ h6 {
   z-index: 1000;
 }
 
-.header .search-container .history-results.open {
+.search-container .history-results.open {
   max-height: 300px;
   opacity: 1;
 }
 
-.header .search-container .history-box {
+.search-container .history-box {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-.header .search-container .history-box .history-item {
+.search-container .history-box .history-item {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 15px;
@@ -275,20 +275,17 @@ h6 {
   font-size: 14px;
 }
 
-.header .search-container .history-box .history-item:hover {
+.search-container .history-box .history-item:hover {
   background: #e9ecef;
 }
 
-.header .search-container .results-box {
+.search-container .results-box {
   padding: 10px;
   border-top: 1px solid #eee;
 }
 
 @media (max-width: 768px) {
-  .header .search-container {
-    order: 3;
-    position: static;
-    transform: none;
+  .search-container {
     width: 100%;
     margin-top: 10px;
   }
@@ -954,7 +951,7 @@ section,
   width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 180px 0 40px 0;
+  padding: 120px 0 40px 0;
   display: flex;
   align-items: center;
   overflow: hidden;
