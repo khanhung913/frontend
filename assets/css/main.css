@@ -217,20 +217,22 @@ h6 {
 
 .header .search-container input {
   width: 100%;
-  padding: 6px 32px 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
+  padding: 6px 12px 6px 36px;
+  border: none;
+  border-radius: 50px;
+  background: #f6f7f8;
 }
 
 .header .search-container input:focus {
-  border-color: #388da8;
   outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 1px #ccc;
 }
 
 .header .search-container .search-icon {
   position: absolute;
   top: 50%;
-  right: 10px;
+  left: 12px;
   transform: translateY(-50%);
   cursor: pointer;
   color: #666;
