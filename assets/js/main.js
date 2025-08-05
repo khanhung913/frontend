@@ -180,13 +180,12 @@
 })();
 
 const searchInput = document.getElementById('searchInput');
-const suggestionsBox = document.getElementById('suggestionsBox');
+const searchIcon = document.getElementById('searchIcon');
+const historyResults = document.getElementById('historyResults');
+const historyBox = document.getElementById('historyBox');
+const resultsBox = document.getElementById('resultsBox');
 
-if (searchInput && suggestionsBox) {
-  const suggestions = [
-    "apple", "banana", "cherry", "date", "grape", "mango", "melon", "orange"
-  ];
-
+if (searchInput && searchIcon && historyResults) {
   function getHistory() {
     return JSON.parse(localStorage.getItem('searchHistory') || '[]');
   }
@@ -195,54 +194,57 @@ if (searchInput && suggestionsBox) {
     if (!term) return;
     let history = getHistory().filter(item => item !== term);
     history.unshift(term);
-    history = history.slice(0, 5);
+    history = history.slice(0, 10);
     localStorage.setItem('searchHistory', JSON.stringify(history));
   }
 
-  function showSuggestions(items) {
-    if (items.length === 0) {
-      suggestionsBox.style.display = 'none';
-      return;
-    }
-    suggestionsBox.innerHTML = items.map(item => `<div class="suggestion-item">${item}</div>`).join('');
-    suggestionsBox.style.display = 'block';
+  function renderHistory() {
+    const history = getHistory();
+    historyBox.innerHTML = history.map(item => `<button class="history-item">${item}</button>`).join('');
   }
 
+  function performSearch(term) {
+    if (!term) return;
+    addHistory(term);
+    renderHistory();
+    resultsBox.innerHTML = `<div class="result-item">Bạn vừa tìm: <strong>${term}</strong></div>`;
+    openDropdown();
+  }
+
+  function openDropdown() {
+    historyResults.classList.add('open');
+  }
+
+  function closeDropdown() {
+    historyResults.classList.remove('open');
+  }
+
+  searchIcon.addEventListener('click', () => {
+    renderHistory();
+    historyResults.classList.toggle('open');
+  });
+
   searchInput.addEventListener('focus', () => {
-    if (searchInput.value.trim() === '') {
-      showSuggestions(getHistory());
-    }
-  });
-
-  searchInput.addEventListener('input', () => {
-    const keyword = searchInput.value.trim().toLowerCase();
-    if (keyword === '') {
-      showSuggestions(getHistory());
-      return;
-    }
-    const filtered = suggestions.filter(item => item.includes(keyword));
-    showSuggestions(filtered);
-  });
-
-  suggestionsBox.addEventListener('click', (e) => {
-    if (e.target.classList.contains('suggestion-item')) {
-      const value = e.target.textContent;
-      searchInput.value = value;
-      addHistory(value);
-      suggestionsBox.style.display = 'none';
-    }
+    renderHistory();
+    openDropdown();
   });
 
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      addHistory(searchInput.value.trim());
-      suggestionsBox.style.display = 'none';
+      performSearch(searchInput.value.trim());
+    }
+  });
+
+  historyBox.addEventListener('click', (e) => {
+    if (e.target.classList.contains('history-item')) {
+      searchInput.value = e.target.textContent;
+      performSearch(searchInput.value.trim());
     }
   });
 
   document.addEventListener('click', (e) => {
-    if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-      suggestionsBox.style.display = 'none';
+    if (!historyResults.contains(e.target) && !searchInput.contains(e.target) && !searchIcon.contains(e.target)) {
+      closeDropdown();
     }
   });
 }
