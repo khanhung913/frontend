@@ -221,6 +221,11 @@ h6 {
   border-radius: 20px;
 }
 
+.header .search-container input:focus {
+  border-color: #388da8;
+  outline: none;
+}
+
 .header .search-container .suggestions {
   position: absolute;
   top: calc(100% + 5px);
