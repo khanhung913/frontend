@@ -220,8 +220,13 @@ if (searchInput && searchIcon && historyResults) {
   }
 
   searchIcon.addEventListener('click', () => {
-    renderHistory();
-    historyResults.classList.toggle('open');
+    const term = searchInput.value.trim();
+    if (term) {
+      performSearch(term);
+    } else {
+      renderHistory();
+      openDropdown();
+    }
   });
 
   searchInput.addEventListener('focus', () => {
