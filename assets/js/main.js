@@ -259,23 +259,25 @@ const text = "単語を入力してください...";
 let index = 0;
 let typingTimeout; // phải khai báo biến này
 
-function typePlaceholder() {
-  if (index <= text.length) {
-    input.placeholder = text.substring(0, index);
-    index++;
-    typingTimeout = setTimeout(typePlaceholder, 80); // gán vào biến
-  } else {
-    typingTimeout = setTimeout(() => {
-      index = 0;
-      typePlaceholder();
-    }, 1500);
+if (input) {
+  function typePlaceholder() {
+    if (index <= text.length) {
+      input.placeholder = text.substring(0, index);
+      index++;
+      typingTimeout = setTimeout(typePlaceholder, 80); // gán vào biến
+    } else {
+      typingTimeout = setTimeout(() => {
+        index = 0;
+        typePlaceholder();
+      }, 1500);
+    }
   }
+
+  // Dừng khi focus vào input
+  input.addEventListener("focus", () => {
+    clearTimeout(typingTimeout);
+    input.placeholder = text;
+  });
+
+  typePlaceholder();
 }
-
-// Dừng khi focus vào input
-input.addEventListener("focus", () => {
-  clearTimeout(typingTimeout); 
-  input.placeholder=text;
-});
-
-typePlaceholder(); 
