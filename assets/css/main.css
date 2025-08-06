@@ -907,30 +907,43 @@ section,
   overflow: hidden;
 }
 
+/* Icon (search) */
 #searchForm .input-group-text {
-  background: var(--accent-color);
-  color: var(--contrast-color);
+  color: var(--accent-color);
   border: none;
+  background-color: transparent;
 }
 
+/* Input field */
 #searchForm .form-control {
   border: none;
   box-shadow: none;
+  background-color: transparent;
+  border-radius: 0; /* để tránh xung đột */
 }
 
+/* Button - nằm trong input group, bo tròn */
 #searchForm .btn {
   background: var(--accent-color);
   border: none;
   color: var(--contrast-color);
+  border-radius: 0; /* reset */
 }
 
+/* Nếu muốn nút cũng bo tròn theo input-group */
+#searchForm .input-group .btn {
+  border-radius: 50px; /* Bo góc phải */
+}
+
+/* Hover effect */
 #searchForm .btn:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
+
 @media (min-width: 768px) {
   .hero .hero-img {
-    max-width: 600px;
+    max-width: 800px;
   }
 }
 
