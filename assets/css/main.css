@@ -930,7 +930,8 @@ section,
 
 @media (min-width: 768px) {
   .hero .hero-img {
-    max-width: 600px;
+    /* Increase hero banner size */
+    max-width: 800px;
   }
 }
 
