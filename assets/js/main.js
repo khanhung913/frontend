@@ -189,15 +189,18 @@ const texts = [
 let textIndex = 0;
 let charIndex = 0;
 let typingInterval;
+let isTypingActive = true;
 
 function typePlaceholder() {
+  if (!isTypingActive) return; // Dừng nếu đang focus
+
   const currentText = texts[textIndex];
   if (charIndex <= currentText.length) {
     input.placeholder = currentText.substring(0, charIndex);
     charIndex++;
     typingInterval = setTimeout(typePlaceholder, 80);
   } else {
-    setTimeout(() => {
+    typingInterval = setTimeout(() => {
       charIndex = 0;
       textIndex = (textIndex + 1) % texts.length;
       typePlaceholder();
@@ -205,16 +208,19 @@ function typePlaceholder() {
   }
 }
 
-input.addEventListener("focus", () => {
+input.addEventListener('focus', () => {
+  isTypingActive = false; // Dừng hiệu ứng
   clearTimeout(typingInterval);
-  input.placeholder = texts[textIndex];
+  input.placeholder = texts[textIndex]; // Hiện full câu hiện tại
 });
 
-input.addEventListener("blur", () => {
+input.addEventListener('blur', () => {
+  isTypingActive = true;  // Cho chạy lại hiệu ứng
   charIndex = 0;
   typePlaceholder();
 });
 
 // Bắt đầu
 typePlaceholder();
+
 
