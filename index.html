@@ -64,16 +64,21 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
-
           <h1 data-aos="fade-up"><span>単語検索</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">英和・和英検索<br>
           </p>
-          <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
-            <i class="bi bi-search search-icon" id="searchIcon"></i>
-            <div id="historyResults" class="history-results">
-              <div id="historyBox" class="history-box"></div>
-              <div id="resultsBox" class="results-box"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-10 mx-auto">
+                <form id="searchForm" class="custom-form pt-2 mb-lg-0" role="search">
+                  <div class="input-group input-group-lg shadow">
+                    <span class="input-group-text bi-search"></span>
+                    <input name="keyword" type="search" class="form-control" id="searchInput"
+                      placeholder="検索したい単語を入力してください" aria-label="Search">
+                    <button type="submit" class="btn btn-primary">検索</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
           <img src="assets/img/quiz-draw.png" class="img-fluid hero-img" alt="" data-aos="zoom-out"

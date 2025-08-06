@@ -2084,3 +2084,69 @@ section,
 .suggestions div:hover {
   background-color: #f0f0f0;
 }
+
+/* -----------------------------
+  CUSTOM FORM START
+  ----------------------------- */
+
+.custom-form .form-control {
+  border-radius: var(--border-radius-large);
+  color: var(--p-color);
+  margin-bottom: 24px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  outline: none;
+}
+
+.form-floating>label {
+  padding-left: 20px;
+}
+
+.custom-form button[type="submit"] {
+  background: var(--custom-btn-bg-color);
+  border: none;
+  border-radius: var(--border-radius-large);
+  color: var(--white-color);
+  font-family: var(--title-font-family);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s;
+  margin-bottom: 0;
+}
+
+.custom-form button[type="submit"]:hover,
+.custom-form button[type="submit"]:focus {
+  background: var(--custom-btn-bg-hover-color);
+  border-color: transparent;
+}
+
+.hero .input-group {
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-large);
+  padding: 10px 15px;
+}
+
+.hero .input-group-text {
+  background-color: transparent;
+  border: 0;
+}
+
+.hero input[type="search"] {
+  border: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.hero button[type="submit"] {
+  background-color: var(--accent-color);
+  border: 0;
+  border-radius: var(--accent-color) !important;
+  color: var(--surface-color);
+  max-width: 150px;
+}
+
+/* -----------------------------
+  CUSTOM FORM END 
+  ----------------------------- */
