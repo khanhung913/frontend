@@ -919,6 +919,10 @@ section,
   overflow: hidden;
 }
 
+#searchForm .input-group:focus-within {
+  box-shadow: 0 0 0 3px var(--accent-color);
+}
+
 
 /* Icon (search) */
 #searchForm .input-group-text {
@@ -933,6 +937,7 @@ section,
   box-shadow: none;
   background-color: transparent;
   border-radius: 0;
+  outline: none;
   /* để tránh xung đột */
 }
 
