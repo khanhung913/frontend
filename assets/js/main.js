@@ -179,3 +179,42 @@
 
 })();
 
+const input = document.getElementById("searchInput");
+const texts = [
+  "単語を入力してください...",
+  "英語⇔日本語をすばやく検索！",
+  "意味をチェックしましょう！"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let typingInterval;
+
+function typePlaceholder() {
+  const currentText = texts[textIndex];
+  if (charIndex <= currentText.length) {
+    input.placeholder = currentText.substring(0, charIndex);
+    charIndex++;
+    typingInterval = setTimeout(typePlaceholder, 80);
+  } else {
+    setTimeout(() => {
+      charIndex = 0;
+      textIndex = (textIndex + 1) % texts.length;
+      typePlaceholder();
+    }, 1500);
+  }
+}
+
+input.addEventListener("focus", () => {
+  clearTimeout(typingInterval);
+  input.placeholder = texts[textIndex];
+});
+
+input.addEventListener("blur", () => {
+  charIndex = 0;
+  typePlaceholder();
+});
+
+// Bắt đầu
+typePlaceholder();
+
