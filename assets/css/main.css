@@ -917,12 +917,16 @@ section,
   border: 2px solid var(--accent-color);
   border-radius: 50px;
   overflow: hidden;
+  transition: box-shadow 0.4s ease;
+  /* 👈 Mấu chốt tạo hiệu ứng mờ dần */
 }
 
 #searchForm .input-group:focus-within {
-  box-shadow: 0 0 0 3px var(--accent-color);
-}
+  box-shadow: 0 0 12px 4px rgba(56, 141, 168, 0.4) !important;
+  /* 👈 Viền tím mờ lan rộng */
+  /* 0.4 = độ mờ */
 
+}
 
 /* Icon (search) */
 #searchForm .input-group-text {
@@ -939,6 +943,12 @@ section,
   border-radius: 0;
   outline: none;
   /* để tránh xung đột */
+}
+
+/* doi mau o input */
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 /* Button - nằm trong input group, bo tròn */
