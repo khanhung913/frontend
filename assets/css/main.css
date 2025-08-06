@@ -853,7 +853,7 @@ section,
   width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 180px 0 40px 0;
+  padding: 100px 0 40px 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -898,6 +898,34 @@ section,
   margin: 5px 0 30px 0;
   font-size: 20px;
   font-weight: 400;
+}
+
+/* Search Form */
+#searchForm .input-group {
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#searchForm .input-group-text {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: none;
+}
+
+#searchForm .form-control {
+  border: none;
+  box-shadow: none;
+}
+
+#searchForm .btn {
+  background: var(--accent-color);
+  border: none;
+  color: var(--contrast-color);
+}
+
+#searchForm .btn:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
 @media (min-width: 768px) {
