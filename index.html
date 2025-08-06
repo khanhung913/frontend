@@ -29,6 +29,13 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- =======================================================
+  * Template Name: QuickStart
+  * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -36,16 +43,37 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/logo.png" alt="">
         <h1 class="sitename">QuickStart</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu ms-auto">
+      <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#vocab">Vocab</a></li>
-          <li><a href="#flashcard">Flashcard</a></li>
-          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="index.html#hero" class="active">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                    class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -64,24 +92,23 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <h1 data-aos="fade-up"><span>単語検索</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">英和・和英検索<br>
+          <h1 data-aos="fade-up">Welcome to <span>QuickStart</span></h1>
+          <p data-aos="fade-up" data-aos-delay="100">Quickly start your project now and set the stage for success<br>
           </p>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 col-10 mx-auto">
-                <form id="searchForm" class="custom-form pt-2 mb-lg-0" role="search">
-                  <div class="input-group input-group-lg shadow">
-                    <span class="input-group-text bi-search"></span>
-                    <input name="keyword" type="search" class="form-control" id="searchInput"
-                      placeholder="検索したい単語を入力してください" aria-label="Search">
-                    <button type="submit" class="btn btn-primary">検索</button>
-                  </div>
-                </form>
-              </div>
+          <!-- <div class="container"> -->
+          <div class="row">
+            <div class="col-lg-6 col-10 mx-auto">
+              <form id="searchForm" class="custom-form pt-2 mb-lg-0" role="search">
+                <div class="input-group input-group-lg shadow">
+                  <span class="input-group-text bi-search"></span>
+                  <input name="keyword" type="search" class="form-control" id="searchInput"
+                    placeholder="検索したい単語を入力してください" aria-label="Search">
+                  <button type="submit" class="btn btn-primary">検索</button>
+                </div>
+              </form>
             </div>
           </div>
-          <img src="assets/img/quiz-draw.png" class="img-fluid hero-img" alt="" data-aos="zoom-out"
+          <img src="assets/img/hero-services-img.webp" class="img-fluid hero-img" alt="" data-aos="zoom-out"
             data-aos-delay="300">
         </div>
       </div>

@@ -12,41 +12,29 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Nunito", sans-serif;
-  --nav-font: "Inter", sans-serif;
+  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Nunito",  sans-serif;
+  --nav-font: "Inter",  sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root {
-  --background-color: #ffffff;
-  /* Background color for the entire website, including individual sections */
-  --default-color: #3d4348;
-  /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #3e5055;
-  /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #388da8;
-  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #3d4348; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #3e5055; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #388da8; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #313336;
-  /* The default color of the main navmenu links */
-  --nav-hover-color: #77b6ca;
-  /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #313336;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #77b6ca;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #313336;  /* The default color of the main navmenu links */
+  --nav-hover-color: #77b6ca; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #313336; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #77b6ca; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -203,95 +191,6 @@ h6 {
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
-
-.header .container-fluid {
-  flex-wrap: wrap;
-}
-
-.search-container {
-  position: relative;
-  max-width: 600px;
-  width: 100%;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 10px 20px 10px 50px;
-  font-size: 1.1rem;
-  border: 2px solid #0d6efd;
-  border-radius: 50px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(13, 110, 253, 0.15);
-}
-
-.search-container input:focus {
-  outline: none;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
-}
-
-.search-container .search-icon {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #0d6efd;
-  font-size: 1.2rem;
-}
-
-.search-container .history-results {
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 0;
-  width: 100%;
-  background: var(--surface-color);
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  z-index: 1000;
-}
-
-.search-container .history-results.open {
-  max-height: 300px;
-  opacity: 1;
-}
-
-.search-container .history-box {
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.search-container .history-box .history-item {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background: #f8f9fa;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.search-container .history-box .history-item:hover {
-  background: #e9ecef;
-}
-
-.search-container .results-box {
-  padding: 10px;
-  border-top: 1px solid #eee;
-}
-
-@media (max-width: 768px) {
-  .search-container {
-    width: 100%;
-    margin-top: 10px;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -954,7 +853,7 @@ section,
   width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 120px 0 40px 0;
+  padding: 180px 0 40px 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -2048,106 +1947,3 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-
-.search-box {
-  position: relative;
-  width: 300px;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: none;
-  outline: none;
-}
-
-/* Suggestion box */
-.suggestions {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  display: none;
-  z-index: 1000;
-}
-
-.suggestions div {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.suggestions div:hover {
-  background-color: #f0f0f0;
-}
-
-/* -----------------------------
-  CUSTOM FORM START
-  ----------------------------- */
-
-.custom-form .form-control {
-  border-radius: var(--border-radius-large);
-  color: var(--p-color);
-  margin-bottom: 24px;
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-left: 20px;
-  outline: none;
-}
-
-.form-floating>label {
-  padding-left: 20px;
-}
-
-.custom-form button[type="submit"] {
-  background: var(--custom-btn-bg-color);
-  border: none;
-  border-radius: var(--border-radius-large);
-  color: var(--white-color);
-  font-family: var(--title-font-family);
-  font-size: var(--p-font-size);
-  font-weight: var(--font-weight-semibold);
-  transition: all 0.3s;
-  margin-bottom: 0;
-}
-
-.custom-form button[type="submit"]:hover,
-.custom-form button[type="submit"]:focus {
-  background: var(--custom-btn-bg-hover-color);
-  border-color: transparent;
-}
-
-.hero .input-group {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-  border-radius: var(--border-radius-large);
-  padding: 10px 15px;
-}
-
-.hero .input-group-text {
-  background-color: transparent;
-  border: 0;
-}
-
-.hero input[type="search"] {
-  border: 0;
-  box-shadow: none;
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-.hero button[type="submit"] {
-  background-color: var(--accent-color);
-  border: 0;
-  border-radius: var(--accent-color) !important;
-  color: var(--surface-color);
-  max-width: 150px;
-}
-
-/* -----------------------------
-  CUSTOM FORM END 
-  ----------------------------- */

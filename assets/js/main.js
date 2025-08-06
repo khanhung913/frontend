@@ -6,7 +6,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
-(function () {
+(function() {
   "use strict";
 
   /**
@@ -25,14 +25,14 @@
   /**
    * Mobile nav toggle
    */
-  // const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-  // function mobileNavToogle() {
-  //   document.querySelector('body').classList.toggle('mobile-nav-active');
-  //   mobileNavToggleBtn.classList.toggle('bi-list');
-  //   mobileNavToggleBtn.classList.toggle('bi-x');
-  // }
-  // mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  function mobileNavToogle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
   /**
    * Hide mobile nav on same-page/hash links
@@ -50,7 +50,7 @@
    * Toggle mobile nav dropdowns
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function (e) {
+    navmenu.addEventListener('click', function(e) {
       e.preventDefault();
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
@@ -122,7 +122,7 @@
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
       let config = JSON.parse(
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
@@ -140,7 +140,7 @@
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener('load', function (e) {
+  window.addEventListener('load', function(e) {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
@@ -178,106 +178,3 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
-
-const searchInput = document.getElementById('searchInput');
-const searchIcon = document.getElementById('searchIcon');
-const historyResults = document.getElementById('historyResults');
-const historyBox = document.getElementById('historyBox');
-const resultsBox = document.getElementById('resultsBox');
-
-if (searchInput && searchIcon && historyResults) {
-  function getHistory() {
-    return JSON.parse(localStorage.getItem('searchHistory') || '[]');
-  }
-
-  function addHistory(term) {
-    if (!term) return;
-    let history = getHistory().filter(item => item !== term);
-    history.unshift(term);
-    history = history.slice(0, 10);
-    localStorage.setItem('searchHistory', JSON.stringify(history));
-  }
-
-  function renderHistory() {
-    const history = getHistory();
-    historyBox.innerHTML = history.map(item => `<button class="history-item">${item}</button>`).join('');
-  }
-
-  function performSearch(term) {
-    if (!term) return;
-    addHistory(term);
-    renderHistory();
-    resultsBox.innerHTML = `<div class="result-item">Bạn vừa tìm: <strong>${term}</strong></div>`;
-    openDropdown();
-  }
-
-  function openDropdown() {
-    historyResults.classList.add('open');
-  }
-
-  function closeDropdown() {
-    historyResults.classList.remove('open');
-  }
-
-  searchIcon.addEventListener('click', () => {
-    const term = searchInput.value.trim();
-    if (term) {
-      performSearch(term);
-    } else {
-      renderHistory();
-      openDropdown();
-    }
-  });
-
-  searchInput.addEventListener('focus', () => {
-    renderHistory();
-    openDropdown();
-  });
-
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      performSearch(searchInput.value.trim());
-    }
-  });
-
-  historyBox.addEventListener('click', (e) => {
-    if (e.target.classList.contains('history-item')) {
-      searchInput.value = e.target.textContent;
-      performSearch(searchInput.value.trim());
-    }
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!historyResults.contains(e.target) && !searchInput.contains(e.target) && !searchIcon.contains(e.target)) {
-      closeDropdown();
-    }
-  });
-}
-
-const input = document.getElementById("searchInput");
-const text = "単語を入力してください...";
-let index = 0;
-let typingTimeout; // phải khai báo biến này
-
-if (input) {
-  function typePlaceholder() {
-    if (index <= text.length) {
-      input.placeholder = text.substring(0, index);
-      index++;
-      typingTimeout = setTimeout(typePlaceholder, 80); // gán vào biến
-    } else {
-      typingTimeout = setTimeout(() => {
-        index = 0;
-        typePlaceholder();
-      }, 1500);
-    }
-  }
-
-  // Dừng khi focus vào input
-  input.addEventListener("focus", () => {
-    clearTimeout(typingTimeout);
-    input.placeholder = text;
-  });
-
-  typePlaceholder();
-}
