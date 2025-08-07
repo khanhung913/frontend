@@ -913,19 +913,25 @@ section,
 }
 
 /* Search Form */
+/* Search Form */
+#searchForm {
+  position: relative;
+}
+
 #searchForm .input-group {
   border: 2px solid var(--accent-color);
   border-radius: 50px;
   overflow: hidden;
-  transition: box-shadow 0.4s ease;
-  /* 👈 Mấu chốt tạo hiệu ứng mờ dần */
+  background: rgba(255, 255, 255, 0.05) !important;     /* Nền mờ nhẹ */
+  backdrop-filter: blur(8px);                /* Mờ kính */
+  -webkit-backdrop-filter: blur(8px);        /* Safari */
+  transition: all 0.3s ease;
 }
 
+/* Hiệu ứng khi focus */
 #searchForm .input-group:focus-within {
-  box-shadow: 0 0 12px 4px rgba(56, 141, 168, 0.4) !important;
-  /* 👈 Viền tím mờ lan rộng */
-  /* 0.4 = độ mờ */
-
+  box-shadow: 0 0 12px 4px var(--accent-color) !important;
+  border: 2px solid rgba(56, 141, 168, 0.6) !important;
 }
 
 /* Icon (search) */
@@ -970,11 +976,58 @@ input:-webkit-autofill {
 #searchForm .btn:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
+@media (max-width: 768px){
+  #searchForm .btn {
+    padding: 0 8px !important;
+  }
+
+  #searchForm .form-control::placeholder {
+    font-size: 16px; /* hoặc nhỏ hơn tùy bạn muốn */
+  }
+}
+
+
+.history-buttons {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.history-buttons button {
+  background-color: rgba(56, 141, 168, 0.2);
+  border: none;
+  color: #388da8;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.history-buttons {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  margin: 8px auto;
+  z-index: 10;
+}
+
+
 
 
 @media (min-width: 768px) {
   .hero .hero-img {
-    max-width: 900px;
+    max-width: 600px;
   }
 }
 
@@ -2018,4 +2071,13 @@ input:-webkit-autofill {
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
 }

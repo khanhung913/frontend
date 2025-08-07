@@ -16,7 +16,7 @@
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
     if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+    window.scrollY > 0 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
   }
 
   document.addEventListener('scroll', toggleScrolled);
@@ -178,4 +178,49 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+const input = document.getElementById("searchInput");
+const texts = [
+  "単語を入力してください...",
+  "英語⇔日本語をすばやく検索！",
+  "意味をチェックしましょう！"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let typingInterval;
+let isTypingActive = true;
+
+function typePlaceholder() {
+  if (!isTypingActive) return; // Dừng nếu đang focus
+
+  const currentText = texts[textIndex];
+  if (charIndex <= currentText.length) {
+    input.placeholder = currentText.substring(0, charIndex);
+    charIndex++;
+    typingInterval = setTimeout(typePlaceholder, 80);
+  } else {
+    typingInterval = setTimeout(() => {
+      charIndex = 0;
+      textIndex = (textIndex + 1) % texts.length;
+      typePlaceholder();
+    }, 1500);
+  }
+}
+
+input.addEventListener('focus', () => {
+  isTypingActive = false; // Dừng hiệu ứng
+  clearTimeout(typingInterval);
+  input.placeholder = texts[textIndex]; // Hiện full câu hiện tại
+});
+
+input.addEventListener('blur', () => {
+  isTypingActive = true;  // Cho chạy lại hiệu ứng
+  charIndex = 0;
+  typePlaceholder();
+});
+
+// Bắt đầu
+typePlaceholder();
+
 
